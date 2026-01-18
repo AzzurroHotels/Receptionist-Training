@@ -13,6 +13,8 @@
   const adminBtn      = document.getElementById("adminBtn");
   const logoutBtn     = document.getElementById("logoutBtn");
 
+  const welcomePage   = document.getElementById("welcomePage");
+
   rt_seedIfMissing();
   const session = rt_getSession();
   if (!session) { window.location.href = "login.html"; return; }
@@ -93,8 +95,16 @@
   }
 
   /* =========================
-     NAVIGATION (ONE SECTION AT A TIME)
+     HELPERS: WELCOME + SECTIONS
   ========================= */
+  function showWelcome() {
+    if (welcomePage) welcomePage.style.display = "";
+  }
+
+  function hideWelcome() {
+    if (welcomePage) welcomePage.style.display = "none";
+  }
+
   function ensureIds() {
     sections.forEach((sec, i) => {
       if (!sec.id) sec.id = `sec-${i}`;
@@ -105,6 +115,9 @@
     });
   }
 
+  /* =========================
+     NAVIGATION (SHOW ONE PROCESS)
+  ========================= */
   function buildNav() {
     navList.innerHTML = "";
     sections.forEach((sec) => {
@@ -117,6 +130,7 @@
 
       a.addEventListener("click", (e) => {
         e.preventDefault();
+        hideWelcome();              // ✅ Welcome disappears
         showSection(sec.id, true);
         closeDropdown();
         clearSearchMeta();
@@ -127,6 +141,11 @@
     });
   }
 
+  function clearActiveNav() {
+    const links = Array.from(navList.querySelectorAll("a"));
+    links.forEach((a) => a.classList.remove("active"));
+  }
+
   function setActiveNav(sectionId) {
     const links = Array.from(navList.querySelectorAll("a"));
     links.forEach((a) => a.classList.remove("active"));
@@ -135,6 +154,14 @@
     const title = (sec?.getAttribute("data-title") || sec?.querySelector("h2")?.textContent || "").trim();
     const match = links.find((a) => a.textContent.trim() === title);
     if (match) match.classList.add("active");
+  }
+
+  function hideAllSections() {
+    sections.forEach((sec) => {
+      sec.classList.add("hidden");
+      sec.style.display = "";
+    });
+    clearActiveNav();
   }
 
   function showSection(sectionId, scrollTop) {
@@ -208,10 +235,8 @@
     qTokens.forEach((t) => { if (tTokens.includes(t)) hits++; });
 
     let s = hits / qTokens.length;
-
     if (normalize(entry.label).includes(normalize(query))) s += 0.3;
     if (entry.type === "detail") s += 0.1;
-
     return s;
   }
 
@@ -268,6 +293,7 @@
   }
 
   function jumpTo(entry) {
+    hideWelcome();                 // ✅ Welcome disappears when search jumps
     showSection(entry.sectionId, false);
     closeDropdown();
 
@@ -329,8 +355,19 @@
 
   SEARCH_ENTRIES = buildSearchEntries();
 
-  // Show first visible section
-  showSection(sections[0].id, false);
+  // ✅ On load: show Welcome, hide processes until a process is selected
+  showWelcome();
+  hideAllSections();
+
+  // If there is a valid hash (deep link), show that section instead
+  const hashId = (window.location.hash || "").replace("#", "").trim();
+  const hashEl = hashId ? document.getElementById(hashId) : null;
+  const hashIsVisibleSection = !!hashEl && sections.includes(hashEl);
+
+  if (hashIsVisibleSection) {
+    hideWelcome();
+    showSection(hashEl.id, false);
+  }
 
   if (lastUpdated) {
     lastUpdated.textContent = new Date().toLocaleDateString(undefined, {
