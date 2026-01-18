@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reception Training</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<script src="auth.js"></script>
+<script>
+  // Require login
+  const s = rt_requireSessionOrRedirect("login.html");
+  if (!s) { /* redirected */ }
+</script>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brandIcon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" class="icon iconBrand">
+        <path d="M7 22V3h10v19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 22h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M11 22v-4h2v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <div>
+      <div class="title">Reception Training</div>
+      <div class="subtitle">Search anything (e.g. customer has no ID, late check-in, noise complaint)</div>
+    </div>
+  </div>
+
+  <div class="topbarRight">
+    <div class="searchArea">
+      <div class="searchWrap">
+        <input id="searchInput" type="search" placeholder="Search the training..." autocomplete="off" />
+        <button id="clearBtn" class="btn" type="button">Clear</button>
+      </div>
+      <div id="searchDropdown" class="searchDropdown hidden" role="listbox" aria-label="Search results"></div>
+    </div>
+
+    <button id="themeToggle" class="btn btnIcon" type="button" title="Toggle theme" aria-label="Toggle theme">
+      <svg id="iconMoon" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 1 0 9.8 9.8z"
+              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <svg id="iconSun" viewBox="0 0 24 24" class="icon hidden" aria-hidden="true">
+        <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1
+                 M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <button class="btn" id="adminBtn" type="button">Admin</button>
+    <button class="btn" id="logoutBtn" type="button">Logout</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <div class="navTitle">Processes</div>
+      <ul id="navList" class="navList"></ul>
+    </nav>
+
+    <div class="helpBox">
+      <div class="helpTitle">Tips</div>
+      <ul>
+        <li>Click a process to view it.</li>
+        <li>Search will jump you to the best matching process or sub-process.</li>
+        <li>Only approved processes show based on your account access.</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div id="searchMeta" class="searchMeta"></div>
+
+    <!-- =====================
+         TRAINING CONTENT
+         Each section MUST have data-process-id for permissions
+    ====================== -->
+
+    <section class="docSection" data-process-id="quick-start" data-tags="overview first day greeting basics" data-title="Quick Start (First Day)">
+      <h2>Quick Start (First Day)</h2>
+      <div class="card">
+        <h3>What success looks like</h3>
+        <ul>
+          <li>Guests feel welcomed within 10 seconds.</li>
+          <li>You can find bookings and confirm ID.</li>
+          <li>You know where to find answers.</li>
+        </ul>
+        <h3>Golden script</h3>
+        <p><b>"Hi! Welcome. May I have your name and an ID please? I'll get you checked in."</b></p>
+      </div>
+    </section>
+
+    <section class="docSection" data-process-id="check-in" data-tags="check-in id booking verification payment bond" data-title="Check-In Process">
+      <h2>Check-In Process</h2>
+
+      <details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="check in checklist steps process standard flow arrival verify booking confirm booking payment bond key access checkout time quiet hours"
+               open>
+        <summary>Step-by-step checklist</summary>
+        <div class="card">
+          <ol>
+            <li>Greet guest and confirm name</li>
+            <li>Locate booking</li>
+            <li>Confirm ID and payment or bond</li>
+            <li>Explain access (keys or digital key)</li>
+            <li>Confirm check-out time and quiet hours</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="accordion" id="no-id"
+               data-title="If the guest has no ID"
+               data-keywords="no id missing id forgot id without id no identification no identification card no drivers license no passport customer has no id guest has no id identification missing id check">
+        <summary>If the guest has no ID</summary>
+        <div class="card">
+          <p>Explain policy calmly. Do not argue.</p>
+          <ul>
+            <li>Ask if ID can be provided later</li>
+            <li>Offer acceptable alternatives</li>
+            <li>Escalate if unsure</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section class="docSection" data-process-id="after-hours" data-tags="late after hours check-in lockbox digital key" data-title="After-Hours / Late Check-In">
+      <h2>After-Hours / Late Check-In</h2>
+      <div class="card">
+        <h3>Script</h3>
+        <p><b>"No worries. I'll guide you. Here is how you access the room."</b></p>
+        <h3>Checklist</h3>
+        <ul>
+          <li>Confirm booking and phone number</li>
+          <li>Confirm access method</li>
+          <li>Send clear instructions</li>
+          <li>Log the interaction</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="docSection" data-process-id="noise" data-tags="noise complaint loud party neighbors" data-title="Common Complaint: Noise">
+      <h2>Common Complaint: Noise</h2>
+      <div class="card">
+        <h3>Do</h3>
+        <ul>
+          <li>Acknowledge the concern</li>
+          <li>Act quickly</li>
+          <li>Document the issue</li>
+        </ul>
+        <h3>Do Not</h3>
+        <ul>
+          <li>Argue with the guest</li>
+          <li>Promise refunds without approval</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="docSection" data-process-id="locked-out" data-tags="lost key locked out access door" data-title="Lost Key / Locked Out">
+      <h2>Lost Key / Locked Out</h2>
+      <div class="card">
+        <h3>Steps</h3>
+        <ol>
+          <li>Verify guest identity</li>
+          <li>Follow key replacement process</li>
+          <li>Log the incident</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Last updated: <span id="lastUpdated"></span></div>
+    </footer>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

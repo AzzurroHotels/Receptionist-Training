@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | Reception Training</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brandRow">
+        <span class="brandIcon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon">
+            <path d="M7 22V3h10v19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 22h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M11 22v-4h2v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div>
+          <div class="h1">Reception Training</div>
+          <div class="sub">Log in to continue</div>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <label>Username</label>
+        <input id="username" type="text" autocomplete="username" required />
+
+        <label>Password</label>
+        <input id="password" type="password" autocomplete="current-password" required />
+
+        <button class="btnPrimary" type="submit">Log In</button>
+      </form>
+
+      <div class="links">
+        <a href="forgot-password.html">Forgot Password?</a>
+        <span class="sep">|</span>
+        <a href="create-account.html">Create Account</a>
+      </div>
+
+      <div id="msg" class="msg"></div>
+
+      <div class="hint">
+        <div><b>Trainee:</b> Trainee_01 / Trainee@2026</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
