@@ -2,6 +2,7 @@
   const searchInput   = document.getElementById("searchInput");
   const clearBtn      = document.getElementById("clearBtn");
   const navList       = document.getElementById("navList");
+  const navOnboarding = document.getElementById("navOnboarding");
   const searchMeta    = document.getElementById("searchMeta");
   const dropdown      = document.getElementById("searchDropdown");
   const lastUpdated   = document.getElementById("lastUpdated");
@@ -118,8 +119,26 @@
   /* =========================
      NAVIGATION (SHOW ONE PROCESS)
   ========================= */
+  function getNavGroup(sec) {
+    // Preferred: explicit grouping via HTML attribute
+    const g = (sec.getAttribute("data-nav-group") || "").trim().toLowerCase();
+    if (g) return g;
+
+    // Safe fallback: treat the onboarding module as "Onboarding"
+    // (keeps existing pages working even if data-nav-group is missing)
+    const pid = (sec.getAttribute("data-process-id") || "").trim().toLowerCase();
+    if (pid === "welcome") return "onboarding";
+
+    const title = (sec.getAttribute("data-title") || sec.querySelector("h2")?.textContent || "").trim().toLowerCase();
+    if (title.includes("onboarding")) return "onboarding";
+
+    return "processes";
+  }
+
   function buildNav() {
-    navList.innerHTML = "";
+    if (navList) navList.innerHTML = "";
+    if (navOnboarding) navOnboarding.innerHTML = "";
+
     sections.forEach((sec) => {
       const title = (sec.getAttribute("data-title") || sec.querySelector("h2")?.textContent || sec.id).trim();
 
@@ -137,17 +156,29 @@
       });
 
       li.appendChild(a);
-      navList.appendChild(li);
+
+      const group = getNavGroup(sec);
+      if (group === "onboarding" && navOnboarding) {
+        navOnboarding.appendChild(li);
+      } else if (navList) {
+        navList.appendChild(li);
+      }
     });
   }
 
+  function getAllNavLinks() {
+    const links = [];
+    if (navOnboarding) links.push(...Array.from(navOnboarding.querySelectorAll("a")));
+    if (navList) links.push(...Array.from(navList.querySelectorAll("a")));
+    return links;
+  }
+
   function clearActiveNav() {
-    const links = Array.from(navList.querySelectorAll("a"));
-    links.forEach((a) => a.classList.remove("active"));
+    getAllNavLinks().forEach((a) => a.classList.remove("active"));
   }
 
   function setActiveNav(sectionId) {
-    const links = Array.from(navList.querySelectorAll("a"));
+    const links = getAllNavLinks();
     links.forEach((a) => a.classList.remove("active"));
 
     const sec = document.getElementById(sectionId);
