@@ -47,6 +47,7 @@ body{
   padding:14px 16px;
   border-bottom:1px solid var(--border);
   background:var(--panel);
+  gap:16px;
 }
 
 .brand{
@@ -75,6 +76,8 @@ body{
   display:flex;
   gap:10px;
   align-items:center;
+  flex:1;                 /* lets search expand and keeps buttons right-aligned */
+  justify-content:flex-end;
 }
 
 /* ===== Buttons ===== */
@@ -101,7 +104,7 @@ body{
   padding:0;
 }
 
-/* ===== Icons (SVG) ===== */
+/* ===== Icons ===== */
 .icon{
   width:18px;
   height:18px;
@@ -131,6 +134,11 @@ body{
 .navTitle{
   font-weight:700;
   margin:6px 0 10px;
+}
+
+/* Add comfortable spacing between sidebar groups (e.g. Onboarding vs Processes) */
+.navTitle + .navList{
+  margin-bottom:14px;
 }
 
 .navList{
@@ -199,9 +207,9 @@ body{
   box-shadow:var(--shadow);
 }
 
-/* ===== Accordions ===== */
+/* ===== Accordions (FINAL UPDATED SPACING) ===== */
 .accordion{
-  margin-bottom:10px;
+  margin:24px 0;                 /* ✅ space ABOVE and BELOW */
   border-radius:14px;
   border:1px solid var(--border);
   padding:10px;
@@ -215,7 +223,7 @@ body{
 }
 
 .accordion .card{
-  margin-top:10px;
+  margin-top:12px;
   box-shadow:none;
   border:1px solid var(--border);
 }
@@ -223,18 +231,23 @@ body{
 /* ===== Search ===== */
 .searchArea{
   position:relative;
+  flex:1;
+  display:flex;
+  justify-content:flex-end;
 }
 
 .searchWrap{
   display:flex;
   gap:8px;
   align-items:center;
+  width:min(640px, 52vw);   /* wider, like your reference screenshot */
 }
 
 .searchWrap input{
-  width:min(520px, 45vw);
-  padding:8px 10px;
-  border-radius:10px;
+  width:100%;               /* fill the searchWrap width */
+  min-width:320px;
+  padding:10px 12px;
+  border-radius:12px;
   border:1px solid var(--border);
   background:var(--panel);
   color:var(--text);
@@ -250,9 +263,9 @@ body{
 /* Dropdown */
 .searchDropdown{
   position:absolute;
-  top:42px;
-  left:0;
-  width:min(520px, 45vw);
+  top:46px;
+  right:0;
+  width:min(640px, 52vw);   /* match searchWrap width */
   background:var(--dropdownBg);
   border:1px solid var(--dropdownBorder);
   border-radius:14px;
@@ -311,10 +324,24 @@ body{
   .sidebar{
     display:none;
   }
+  .topbar{
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .brand{
+    flex:1 1 260px;
+  }
+  .topbarRight{
+    flex:1 1 260px;
+    justify-content:flex-end;
+  }
+  .searchWrap{
+    width:min(520px, 72vw);
+  }
   .searchWrap input{
-    width:min(520px, 65vw);
+    min-width:0;
   }
   .searchDropdown{
-    width:min(520px, 65vw);
+    width:min(520px, 72vw);
   }
 }
