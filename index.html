@@ -61,6 +61,9 @@
 <div class="layout">
   <aside class="sidebar">
     <nav>
+      <div class="navTitle">Onboarding</div>
+      <ul id="navOnboarding" class="navList"></ul>
+
       <div class="navTitle">Processes</div>
       <ul id="navList" class="navList"></ul>
     </nav>
@@ -110,18 +113,177 @@
          Each section MUST have data-process-id for permissions
     ====================== -->
 
-    <section class="docSection" data-process-id="quick-start" data-tags="overview first day greeting basics" data-title="Quick Start (First Day)">
-      <h2>Quick Start (First Day)</h2>
+    <section class="docSection" data-process-id="Welcome" data-nav-group="onboarding" data-tags="overview first day greeting basics" data-title="Staff Onboarding Module">
+      <h2>Staff Onboarding Module</h2>
       <div class="card">
-        <h3>What success looks like</h3>
+        <h2>Welcome to Azzurro Hotels!</h2>
+		<h3>Module Purpose</h3>
+		<p>This onboarding module introduces new team members to:</p>
         <ul>
-          <li>Guests feel welcomed within 10 seconds.</li>
-          <li>You can find bookings and confirm ID.</li>
-          <li>You know where to find answers.</li>
+          <li>How Azzurro Hotels operates.</li>
+          <li>Our self check-in accommodation model.</li>
+          <li>The difference between <b>Front-of-House</b> and <b>Back-Office roles</b>.</li>
+		  <li>How teams work together to deliver a consistent guest experience</li>
         </ul>
-        <h3>Golden script</h3>
-        <p><b>"Hi! Welcome. May I have your name and an ID please? I'll get you checked in."</b></p>
+		<p>By the end of this module, you should understand <b>your role, your responsibilities</b>, and <b>how your work supports guests and other team members</b>.</p>
       </div>
+	  
+	  
+	  <details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="About Azzurro Hotels operates modern pod hostels and serviced accommodation across Australia.
+			   Our properties are designed for efficient contactless stays self check-in Airbnb style"
+               open>
+		<summary>1. About Azzurro Hotels</summary>
+	  <div class="card">
+		<p>Azzurro Hotels operates modern pod hostels and serviced accommodation across Australia.
+		Our properties are designed for <b>efficient, contactless stays</b>, using technology and automation rather than traditional onsite reception desks.</p>
+		
+		<p>We operate using a <b>self check-in (Airbnb-style)</b> model, where:</p>
+	
+          <ul>
+            <li>Guests check in online before arrival</li>
+            <li>Access is provided via secure door codes</li>
+            <li>There is no physical front desk</b></li>
+            <li>Guest support is provided remotely by our virtual reception team</li>
+          </ul>
+		<p>This model allows us to offer flexibility to guests while maintaining consistent service standards across all properties.</p>
+       </div>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="Our Operating Model How Things Work Principles Onsite staff"
+               open>
+		<summary>2. Our Operating Model (How Things Work)</summary>
+	  <div class="card">
+		<p><b>Key Principles</b></p>	
+          <ul>
+            <li><b>24-hour self check-in</b> for guests</li>
+			<li><b>Check-in time starts from 3:00 PM</b></li>
+			<li>Access codes <b>activate from 3:00 PM onwards only</b></li>
+			<li>Guest communication is handled <b>remotely</b></li>
+			<li>Onsite staff (e.g. cleaners) <b>do not</b> handle check-in</li>
+          </ul>
+		<p>Clear communication and system accuracy are critical to prevent guest confusion.</p>
+       </div>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="Front of House Guest Facing Roles"
+               open>
+		<summary>3. Front-of-House Staff (Guest-Facing Roles)</summary>
+	  <div class="card">
+		<p>Front-of-House staff are responsible for <b>direct guest communication and support, delivered remotely.</b></p>
+		<h3>Your Responsibilities</h3>	
+          <ul>
+            <li>Respond to guest enquiries via:</li>
+			    <ul>
+				<li>SMS</li>
+				<li>WhatsApp</li>
+				<li>Email</li>
+				<li>Phone</li>
+				</ul>
+			<li>Assist guests with:</li>
+			    <ul>
+				<li>Online check-in</li>
+				<li>Access codes</li>
+				<li>Room or bed details</li>
+				<li>General stay questions</li>
+				</ul>
+			<li>Escalate issues when required, following SOPs</li>
+          </ul>
+		<h3>What Success Looks Like</h3>
+		  <ul>
+            <li>Guests understand the process before arrival</li>
+			<li>Fewer access-related complaints</li>
+			<li>Calm, clear, professional communication at all times</b></li>
+          </ul>
+		 <p>You are the <b>voice of Azzurro Hotels</b> to our guests.</p>
+       </div>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="Back Office Staff behind the scenes managing systems data processes process"
+               open>
+		<summary>4. Back-Office Staff (Operations & Systems Roles)</summary>
+	  <div class="card">
+		<p>Back-Office staff support the guest experience  <b>behind the scenes</b> by managing systems, data, and processes.</p>
+		<h3>Your Responsibilities</h3>	
+          <ul>
+            <li>Maintain booking and property systems</li>
+			<li>Manage and update:</li>
+			    <ul>
+				<li>Automated message templates</li>
+				<li>Check-in workflows</li>
+				<li>SOPs and training materials</li>
+				</ul>
+			<li>Monitor integrations (reservations, messaging, access codes)</li>
+			<li>Ensure information used by Front-of-House staff is accurate and current</li>
+			<li>Support escalation and issue resolution</li>
+          </ul>
+		<h3>What Success Looks Like</h3>
+		  <ul>
+            <li>Systems run smoothly with minimal manual intervention</li>
+			<li>Messaging is clear, consistent, and approved</li>
+			<li>Front-of-House teams have the information they need to support guests confidently</b></li>
+          </ul>
+		 <p>Back-Office work ensures <b>consistency and reliability</b> across all properties.</p>
+       </div>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="How Teams Work Together"
+               open>
+		<summary>5. How Teams Work Together</summary>
+	  <div class="card">
+		<p>At Azzurro Hotels, guest experience depends on <b>strong alignment between teams</b></p>
+          <ul>
+            <li>Back-Office builds and maintains systems</li>
+			<li>Front-of-House delivers the guest experience</li>
+			<li>SOPs ensure everyone follows the same standards</li>
+          </ul>
+		<p>When systems and communication are aligned, guests experience a smooth, stress-free stay.</p>
+       </div>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="Key Expectations for All Staff All team members are expected to"
+               open>
+		<summary>6. Key Expectations for All Staff</summary>
+	  <div class="card">
+		<h3>All team members are expected to:</h3>	
+          <ul>
+            <li>Follow approved SOPs and templates</li>
+			<li>Communicate clearly and professionally</li>
+			<li>Avoid giving guests conflicting information</li>
+			<li>Escalate issues rather than improvising</li>
+			<li>Maintain a consistent brand voice</li>
+          </ul>
+		<p>Consistency protects both <b>guest experience</b> and <b>team efficiency</b>.</p>
+		</details>
+		
+		<details class="accordion" id="checkin-checklist"
+               data-title="Step-by-step checklist"
+               data-keywords="After completing this module "
+               open>
+		<summary>7. Next Steps</summary>
+	  <div class="card">
+		<h3>After completing this module, you will:</h3>	
+          <ul>
+            <li>Be introduced to the tools</li>
+			<li>Lern the function of the tools</li>
+			<li>Review role -specific SOPs</li>
+			<li>Learn the guest journey in detail</li>
+			<li>Be trained on the systems relevant to your role</li>
+          </ul>
+		<p>If you are unsure about any process, <b>ask before acting</b>.</p>
+		</details>
+		
     </section>
 
     <section class="docSection" data-process-id="check-in" data-tags="check-in id booking verification payment bond" data-title="Check-In Process">
