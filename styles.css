@@ -27,7 +27,7 @@
 }
 
 /* ===== Base ===== */
-*{box-sizing:border-box}
+*{ box-sizing:border-box }
 
 body{
   margin:0;
@@ -76,7 +76,7 @@ body{
   display:flex;
   gap:10px;
   align-items:center;
-  flex:1;                 /* lets search expand and keeps buttons right-aligned */
+  flex:1;
   justify-content:flex-end;
 }
 
@@ -89,11 +89,10 @@ body{
   color:var(--text);
   cursor:pointer;
   font-size:13px;
+  white-space:nowrap;
 }
 
-.btn:hover{
-  background:var(--hover);
-}
+.btn:hover{ background:var(--hover); }
 
 .btnIcon{
   width:42px;
@@ -136,7 +135,6 @@ body{
   margin:6px 0 10px;
 }
 
-/* Add comfortable spacing between sidebar groups (e.g. Onboarding vs Processes) */
 .navTitle + .navList{
   margin-bottom:14px;
 }
@@ -207,9 +205,9 @@ body{
   box-shadow:var(--shadow);
 }
 
-/* ===== Accordions (FINAL UPDATED SPACING) ===== */
+/* ===== Accordions (UPDATED SPACING) ===== */
 .accordion{
-  margin:24px 0;                 /* ✅ space ABOVE and BELOW */
+  margin: 32px 0;     /* ✅ THIS creates the space you asked for */
   border-radius:14px;
   border:1px solid var(--border);
   padding:10px;
@@ -240,11 +238,11 @@ body{
   display:flex;
   gap:8px;
   align-items:center;
-  width:min(640px, 52vw);   /* wider, like your reference screenshot */
+  width:min(640px, 52vw);
 }
 
 .searchWrap input{
-  width:100%;               /* fill the searchWrap width */
+  width:100%;
   min-width:320px;
   padding:10px 12px;
   border-radius:12px;
@@ -260,12 +258,11 @@ body{
   box-shadow:0 0 0 3px rgba(37,99,235,.15);
 }
 
-/* Dropdown */
 .searchDropdown{
   position:absolute;
   top:46px;
   right:0;
-  width:min(640px, 52vw);   /* match searchWrap width */
+  width:min(640px, 52vw);
   background:var(--dropdownBg);
   border:1px solid var(--dropdownBorder);
   border-radius:14px;
@@ -280,13 +277,9 @@ body{
   cursor:pointer;
 }
 
-.searchItem:last-child{
-  border-bottom:none;
-}
+.searchItem:last-child{ border-bottom:none; }
 
-.searchItem:hover{
-  background:var(--hover);
-}
+.searchItem:hover{ background:var(--hover); }
 
 .searchItemTitle{
   font-weight:700;
@@ -299,14 +292,11 @@ body{
 }
 
 /* ===== Utilities ===== */
-.hidden{
-  display:none !important;
-}
+.hidden{ display:none !important; }
 
 .jumpHighlight{
   outline:3px solid rgba(37,99,235,.35);
   border-radius:12px;
-  transition:outline .2s ease;
 }
 
 /* ===== Footer ===== */
@@ -326,14 +316,6 @@ body{
   }
   .topbar{
     flex-wrap:wrap;
-    align-items:flex-start;
-  }
-  .brand{
-    flex:1 1 260px;
-  }
-  .topbarRight{
-    flex:1 1 260px;
-    justify-content:flex-end;
   }
   .searchWrap{
     width:min(520px, 72vw);
