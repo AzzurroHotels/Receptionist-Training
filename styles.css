@@ -327,3 +327,9 @@ body{
     width:min(520px, 72vw);
   }
 }
+
+/* Training video – minimal styling (rounded corners only) */
+.trainingVideo{
+  width:100%;
+  border-radius:12px;
+}
